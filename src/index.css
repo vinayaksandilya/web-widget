@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Phone input customization */
+.react-tel-input .form-control {
+  @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-black focus:ring-black;
+}
+
+.react-tel-input .selected-flag {
+  @apply rounded-l-lg;
+}
+
+.react-tel-input .country-list {
+  @apply rounded-lg shadow-lg;
+}
