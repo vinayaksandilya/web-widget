@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const GuestSelector: React.FC<Props> = ({ value, onChange }) => {
-  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
   return (
     <div className="overflow-x-auto pb-2">

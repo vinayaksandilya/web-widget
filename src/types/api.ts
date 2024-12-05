@@ -1,4 +1,5 @@
 export interface Restaurant {
+  phone: any;
   slack: string;
   title: string;
   opening_time: string;

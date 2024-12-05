@@ -18,3 +18,46 @@
 .datep, .stime{
     margin-top: 15px;
 }
+.collapsible-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    /* max-width: 500px; */
+    margin: 20px auto;
+  }
+  
+  .collapsible-header {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .collapsible-header:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .arrow-icon {
+    font-size: 16px;
+    transition: transform 0.1s;
+  }
+  
+  .arrow-icon.open {
+    transform: rotate(180deg);
+  }
+  
+  .collapsible-content {
+    padding: 15px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+    line-height: 1.5;
+  }
+  
