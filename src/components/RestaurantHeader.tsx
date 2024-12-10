@@ -5,14 +5,15 @@ import { Restaurant } from '../types/api';
 interface Props {
   restaurant: Restaurant;
 }
-
+const imgUrl = 'https://reserve-api-santosh.wegsoft.com/';
+ 
 export const RestaurantHeader: React.FC<Props> = ({ restaurant }) => {
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <img
-            src={restaurant.img_logo}
+            src={`${imgUrl}${restaurant.img_logo}`}
             alt={restaurant.title}
             className="w-16 h-16 rounded-full object-cover"
           />
