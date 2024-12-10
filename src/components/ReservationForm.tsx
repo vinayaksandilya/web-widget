@@ -153,15 +153,24 @@ export const ReservationForm: React.FC<Props> = ({
           <PhoneInput
             country={"in"}
             value={formData.phone}
+            countryCodeEditable = {false}
             onChange={(phone, data: any) => {
               setFormData((prev) => ({
                 ...prev,
-                phone,
+                phone: phone.replace(`+${data.dialCode}`, ""), 
                 country_code: `+${data.dialCode}`,
               }));
             }}
             inputClass="!w-full !rounded-lg border border-black !px-4 !py-2"
             containerClass="!w-full mt-3"
+            onBlur={() => {
+              if (formData.phone === "") {
+                setFormData((prev) => ({
+                  ...prev,
+                  country_code: "+91", 
+                }));
+              }
+            }}
           />
         </div>
 
