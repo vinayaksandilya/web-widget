@@ -29,18 +29,31 @@ export const ReservationSuccess: React.FC<Props> = ({
 
   const handleShare = async () => {
     if (contentRef.current) {
-      const dataUrl = await toPng(contentRef.current);
       try {
-        await navigator.share({
-          title: 'My Restaurant Reservation',
-          text: `Reservation at ${restaurant.title}`,
-          files: [new File([dataUrl], 'reservation.png', { type: 'image/png' })],
+        const dataUrl = await toPng(contentRef.current);
+        const response = await fetch(dataUrl);
+        const blob = await response.blob();
+  
+        const file = new File([blob], `reservation-${reservationId}.png`, {
+          type: 'image/png',
         });
+  
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: 'My Restaurant Reservation',
+            text: `Reservation at ${restaurant.title}`,
+            files: [file],
+          });
+        } else {
+          console.error('Sharing not supported for files on this platform.');
+          alert('Sharing not supported for files on this platform.');
+        }
       } catch (error) {
         console.error('Error sharing:', error);
       }
     }
   };
+  
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -72,10 +85,10 @@ export const ReservationSuccess: React.FC<Props> = ({
               <p className="font-medium">{reservationDetails.reserve_checkin_time}</p>
             </div>
             <div>
-              <p className="text-gray-600">Guests</p>
-              <p className="font-medium">
+              <p className="text-black-600">Guests: {reservationDetails.od_total}</p>
+              {/* <p className="font-medium">
                 {reservationDetails.od_adult} Adults, {reservationDetails.od_kids} Kids
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
