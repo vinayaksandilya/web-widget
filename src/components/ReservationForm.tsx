@@ -123,10 +123,24 @@ export const ReservationForm: React.FC<Props> = ({
     return true;
   };
 
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (validateGuests()) {
+  //     onSubmit(formData);
+  //   }
+  // };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const phoneWithoutCountryCode =
+      formData.phone.length > 10
+        ? formData.phone.substring(2) 
+        : formData.phone;
+    console.log(phoneWithoutCountryCode);
+    const dataToSubmit = { ...formData, phone: phoneWithoutCountryCode };
     if (validateGuests()) {
-      onSubmit(formData);
+      onSubmit(dataToSubmit); 
     }
   };
 
@@ -153,12 +167,15 @@ export const ReservationForm: React.FC<Props> = ({
           <PhoneInput
             country={"in"}
             value={formData.phone}
-            countryCodeEditable = {false}
+            countryCodeEditable={false}
             onChange={(phone, data: any) => {
+              console.log("Phone Input:", phone);
+              console.log("COuntry code:", data);
+
               setFormData((prev) => ({
                 ...prev,
-                phone: phone.replace(`+${data.dialCode}`, ""), 
-                country_code: `+${data.dialCode}`,
+                phone: phone.replace(`+${data.dialCode}`, ""), // Remove country code from phone number
+                country_code: `+${data.dialCode}`, // Separate country code
               }));
             }}
             inputClass="!w-full !rounded-lg border border-black !px-4 !py-2"
@@ -167,7 +184,7 @@ export const ReservationForm: React.FC<Props> = ({
               if (formData.phone === "") {
                 setFormData((prev) => ({
                   ...prev,
-                  country_code: "+91", 
+                  country_code: "+91",
                 }));
               }
             }}
