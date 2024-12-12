@@ -68,7 +68,7 @@ export const ReservationSuccess: React.FC<Props> = ({
 
         <div className="flex justify-center">
           <QRCodeSVG
-            value={`${window.location.origin}/reservation/${reservationId}`}
+            value={`${reservationId}`}
             size={200}
           />
         </div>
