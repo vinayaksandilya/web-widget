@@ -36,7 +36,6 @@ export const ReservationForm: React.FC<Props> = ({
     od_total: 1,
     od_adult: 0,
     od_kids: 0,
-    status: 5,
     comment: "",
     preferences_id: [] as number[],
   });
