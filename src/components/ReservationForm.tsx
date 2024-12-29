@@ -97,7 +97,7 @@ export const ReservationForm: React.FC<Props> = ({
         "The combined count of adults and kids cannot exceed the total number of guests."
       );
     } else {
-      setErrorMessage(""); // Reset error message if totalGuests is within range
+      setErrorMessage(""); 
     }
   };
 
@@ -118,28 +118,19 @@ export const ReservationForm: React.FC<Props> = ({
       );
       return false;
     }
-    setErrorMessage(""); // Clear error if validation passes
+    setErrorMessage(""); 
     return true;
   };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (validateGuests()) {
-  //     onSubmit(formData);
-  //   }
-  // };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const phoneWithoutCountryCode =
-      formData.phone.length > 10
-        ? formData.phone.substring(2) 
-        : formData.phone;
+      formData.phone.length > 10 ? formData.phone.substring(2) : formData.phone;
     console.log(phoneWithoutCountryCode);
     const dataToSubmit = { ...formData, phone: phoneWithoutCountryCode };
     if (validateGuests()) {
-      onSubmit(dataToSubmit); 
+      onSubmit(dataToSubmit);
     }
   };
 
@@ -286,8 +277,13 @@ export const ReservationForm: React.FC<Props> = ({
                     name="od_adult"
                     min="0"
                     className="block w-full rounded-lg border border-black shadow-sm focus:outline-none px-4 name"
-                    value={formData.od_adult}
+                    value={formData.od_adult || ""}
                     onChange={handleGuestChange}
+                    onBlur={(e) => {
+                      if (e.target.value === "") {
+                        setFormData((prev) => ({ ...prev, od_adult: 0 }));
+                      }
+                    }}
                   />
                 </div>
                 <div>
@@ -299,8 +295,13 @@ export const ReservationForm: React.FC<Props> = ({
                     name="od_kids"
                     min="0"
                     className="block w-full rounded-lg border border-black shadow-sm focus:outline-none px-4 name"
-                    value={formData.od_kids}
+                    value={formData.od_kids || ""}
                     onChange={handleGuestChange}
+                    onBlur={(e) => {
+                      if (e.target.value === "") {
+                        setFormData((prev) => ({ ...prev, od_kids: 0 }));
+                      }
+                    }}
                   />
                 </div>
               </div>

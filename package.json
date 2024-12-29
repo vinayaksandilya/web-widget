@@ -12,12 +12,15 @@
   "dependencies": {
     "axios": "^1.6.7",
     "date-fns": "^3.3.1",
+    "ga-gtag": "^1.2.0",
     "html-to-image": "^1.11.11",
     "lucide-react": "^0.344.0",
     "qrcode.react": "^3.1.0",
     "react": "^18.3.1",
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.3.1",
+    "react-ga": "^3.3.1",
+    "react-ga4": "^2.1.0",
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.22.2"
   },
