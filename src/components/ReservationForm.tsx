@@ -164,8 +164,8 @@ export const ReservationForm: React.FC<Props> = ({
 
               setFormData((prev) => ({
                 ...prev,
-                phone: phone.replace(`+${data.dialCode}`, ""), // Remove country code from phone number
-                country_code: `+${data.dialCode}`, // Separate country code
+                phone: phone.replace(`+${data.dialCode}`, ""), 
+                country_code: `+${data.dialCode}`, 
               }));
             }}
             inputClass="!w-full !rounded-lg border border-black !px-4 !py-2"

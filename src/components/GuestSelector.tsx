@@ -15,7 +15,8 @@ export const GuestSelector: React.FC<Props> = ({ value, onChange }) => {
         {options.map((option) => (
           <ChoiceChip
             key={option}
-            label={`${option} ${option === 1 ? 'Guest' : 'Guests'}`}
+            // label={`${option} ${option === 1 ? 'Guest' : 'Guests'}`}
+            label={`${option}`}
             selected={value === option}
             onClick={() => onChange(option)}
           />
