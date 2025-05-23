@@ -25,8 +25,9 @@ export const RestaurantHeader: React.FC<Props> = ({ restaurant }) => {
       </div>
       
       <div className="mt-4 flex flex-col sm:flex-row sm:space-x-6">
-        <a
-          href={`tel:${restaurant.phone}`}
+       <a
+          href={`tel:${restaurant.country_code}${restaurant.phone}`}
+          onClick={() => console.log('Calling number:', `${restaurant.country_code}${restaurant.phone}`)}
           className="flex items-center space-x-2 text-gray-600 hover:text-black"
         >
           <Phone size={20} />
