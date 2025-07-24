@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Restaurant, DateSlot, TimeSlot, ReservationResponse } from '../types/api';
+import { Restaurant, DateSlot, TimeSlot, ReservationResponse, GetReservationDetailResponse } from '../types/api';
 
 const BASE_URL = 'https://reserve-api-santosh.wegsoft.com/api';
 
@@ -31,3 +31,10 @@ export const createReservation = async (slack: string, data: any) => {
   );
   return response.data;
 };
+
+export const getReservationDetails = async (reservationId: string) => {
+  const response = await axios.get<GetReservationDetailResponse>(
+     `${BASE_URL}/guest_reservation?reservation_id=${reservationId}`
+  );
+  return response.data;
+}

@@ -6,8 +6,14 @@ interface Props {
   restaurant: Restaurant;
 }
 const imgUrl = 'https://reserve-api-santosh.wegsoft.com/';
- 
+
 export const RestaurantHeader: React.FC<Props> = ({ restaurant }) => {
+  console.log('Restaurant Contact:', {
+    countryCode: restaurant.country_code,
+    phone: restaurant.phone,
+    fullNumber: `${restaurant.country_code}${restaurant.phone}`
+  });
+
   return (
     <div className="bg-white shadow-md rounded-lg p-6 mb-8">
       <div className="flex items-center justify-between">
@@ -26,7 +32,8 @@ export const RestaurantHeader: React.FC<Props> = ({ restaurant }) => {
       
       <div className="mt-4 flex flex-col sm:flex-row sm:space-x-6">
         <a
-          href={`tel:${restaurant.phone}`}
+          href={`tel:${restaurant.country_code}${restaurant.phone}`}
+          onClick={() => console.log('Calling number:', `${restaurant.country_code}${restaurant.phone}`)}
           className="flex items-center space-x-2 text-gray-600 hover:text-black"
         >
           <Phone size={20} />

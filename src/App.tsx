@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { getRestaurantDetails, createReservation } from './services/api';
 import { RestaurantHeader } from './components/RestaurantHeader';
 import { ReservationForm } from './components/ReservationForm';
 import { ReservationSuccess } from './components/ReservationSuccess';
 import { Restaurant, Preference } from './types/api';
+import Booking from './components/Booking'; 
 
 const DEFAULT_SLACK = 'U12AB34CDEFG5678H';
 
@@ -107,6 +108,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ReservationPage />} />
         <Route path="/:slack" element={<ReservationPage />} />
+        <Route path="/booking/:reservationId" element={<Booking />} /> {/* Updated Booking route with dynamic reservationId */}
       </Routes>
     </BrowserRouter>
   );

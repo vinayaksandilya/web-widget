@@ -1,5 +1,6 @@
 export interface Restaurant {
   phone: any;
+  country_code: string;
   slack: string;
   title: string;
   opening_time: string;
@@ -44,4 +45,20 @@ export interface TimeSlot {
 export interface ReservationResponse {
   message: string;
   reservation: number;
+}
+
+export interface ReservationDetail {
+  name: string;
+  reserve_date: string;
+  reserve_time: string;
+  total_pax: number;
+  rest_name: string;
+  street: string;
+  city: string;
+  state: string;
+  pincode: number;
+}
+
+export interface GetReservationDetailResponse {
+  reservation: ReservationDetail;
 }
