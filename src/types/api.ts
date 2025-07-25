@@ -36,10 +36,16 @@ export interface DateSlot {
   day: string;
 }
 
+export interface SlotDetail {
+  time: string;
+  available_covers: number;
+  is_available: boolean;
+}
+
 export interface TimeSlot {
   id: number;
   name: string;
-  slots: string[];
+  slots: SlotDetail[];
 }
 
 export interface ReservationResponse {

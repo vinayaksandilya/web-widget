@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Restaurant, DateSlot, TimeSlot, ReservationResponse, GetReservationDetailResponse } from '../types/api';
 
-const BASE_URL = 'https://reserve-api-santosh.wegsoft.com/api';
+const BASE_URL = 'https://stage-reserve-api.wegsoft.com/api';
 
 export const getRestaurantDetails = async (slack: string) => {
   const response = await axios.get<{ Restaurant: Restaurant, prefrences: any[] }>(

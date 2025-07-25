@@ -118,6 +118,25 @@ export const ReservationForm: React.FC<Props> = ({
       );
       return false;
     }
+    
+    // Check if the selected time slot is available
+    if (formData.reserve_checkin_time) {
+      const selectedSlotCategory = timeSlots.find(slot => 
+        slot.slots.some(s => s.time === formData.reserve_checkin_time)
+      );
+      
+      if (selectedSlotCategory) {
+        const selectedTimeSlot = selectedSlotCategory.slots.find(
+          s => s.time === formData.reserve_checkin_time
+        );
+        
+        if (selectedTimeSlot && !selectedTimeSlot.is_available) {
+          setErrorMessage("The selected time slot is not available. Please choose another time.");
+          return false;
+        }
+      }
+    }
+    
     setErrorMessage(""); 
     return true;
   };

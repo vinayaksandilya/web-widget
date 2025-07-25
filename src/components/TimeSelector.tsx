@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChoiceChip } from './ChoiceChip';
-import { TimeSlot } from '../types/api';
+import { TimeSlot, SlotDetail } from '../types/api';
 
 interface Props {
   timeSlots: TimeSlot[];
@@ -31,12 +31,16 @@ export const TimeSelector: React.FC<Props> = ({ timeSlots, selectedTime, onSelec
           <div className="flex space-x-2">
             {timeSlots
               .find((slot) => slot.name === selectedSlot)
-              ?.slots.map((time) => (
+              ?.slots.map((slotDetail) => (
                 <ChoiceChip
-                  key={time}
-                  label={time}
-                  selected={selectedTime === time}
-                  onClick={() => onSelect(time)}
+                  key={slotDetail.time}
+                  label={slotDetail.time}
+                  subLabel={slotDetail.is_available 
+                    ? (slotDetail.available_covers > 0 ? `${slotDetail.available_covers} left` : '') 
+                    : 'Sold Out'}
+                  selected={selectedTime === slotDetail.time}
+                  onClick={() => slotDetail.is_available ? onSelect(slotDetail.time) : null}
+                  className={!slotDetail.is_available ? 'opacity-50 cursor-not-allowed' : ''}
                 />
               ))}
           </div>
