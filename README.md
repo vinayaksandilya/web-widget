@@ -8,9 +8,21 @@ Web Widget is a plug-and-play JavaScript widget built using React, Vite, and Tai
 
 This project is configured for deployment on Cloudflare Pages. The configuration is in the `.cloudflare/pages.toml` file.
 
+To deploy to Cloudflare Pages:
+
+```bash
+npm run deploy:cloudflare
+```
+
 ### Vercel
 
 This project is also configured for deployment on Vercel. The configuration is in the `vercel.json` file.
+
+To deploy to Vercel:
+
+```bash
+npm run deploy:vercel
+```
 
 ## Development
 
@@ -25,10 +37,12 @@ npm run dev
 npm run build
 ```
 
-## Deployment Script
+## Deployment Scripts
 
-You can use the included build script to build the project:
+The project includes specialized build scripts for different deployment platforms:
 
-```bash
-./build.sh
-```
+- `cloudflare-build.sh`: Optimized for Cloudflare Pages deployment
+- `vercel-build.sh`: Optimized for Vercel deployment
+- `build.sh`: General-purpose build script
+
+These scripts handle the removal of yarn.lock and ensure proper npm-based builds.

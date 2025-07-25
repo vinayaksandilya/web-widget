@@ -6,13 +6,16 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
-        "installCommand": "npm install",
-        "buildCommand": "npm run build"
+        "installCommand": "chmod +x ./vercel-build.sh && ./vercel-build.sh",
+        "buildCommand": "echo 'Build already completed in installCommand'"
       }
     }
   ],
   "routes": [
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  ],
+  "env": {
+    "YARN_ENABLE": "false"
+  }
 }
