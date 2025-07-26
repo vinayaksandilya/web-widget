@@ -5,7 +5,7 @@ import { Restaurant } from '../types/api';
 interface Props {
   restaurant: Restaurant;
 }
-const imgUrl = 'https://stage-reserve-api.wegsoft.com/';
+const imgUrl = '';
 
 export const RestaurantHeader: React.FC<Props> = ({ restaurant }) => {
   console.log('Restaurant Contact:', {
