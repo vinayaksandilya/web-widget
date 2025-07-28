@@ -36,7 +36,7 @@ export const TimeSelector: React.FC<Props> = ({ timeSlots, selectedTime, onSelec
                   key={slotDetail.time}
                   label={slotDetail.time}
                   subLabel={slotDetail.is_available 
-                    ? (slotDetail.available_covers > 0 ? `${slotDetail.available_covers} left` : '') 
+                    ? (slotDetail.available_covers > 0 && slotDetail.available_covers < 10 ? `${slotDetail.available_covers} left` : '') 
                     : 'Sold Out'}
                   selected={selectedTime === slotDetail.time}
                   onClick={() => slotDetail.is_available ? onSelect(slotDetail.time) : null}
