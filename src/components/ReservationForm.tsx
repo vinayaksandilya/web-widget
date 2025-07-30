@@ -141,6 +141,16 @@ export const ReservationForm: React.FC<Props> = ({
     return true;
   };
 
+  const isFormValid = () => {
+    return (
+      formData.name.trim() !== "" &&
+      formData.phone.trim() !== "" &&
+      formData.od_total > 0 &&
+      formData.reserve_date !== "" &&
+      formData.reserve_checkin_time !== ""
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -355,7 +365,12 @@ export const ReservationForm: React.FC<Props> = ({
       <div>
         <button
           type="submit"
-          className="block w-full rounded-lg border border-black bg-black text-white py-2"
+          disabled={!isFormValid()}
+          className={`block w-full rounded-lg border border-black py-2 ${
+            isFormValid()
+              ? "bg-black text-white"
+              : "bg-gray-300 text-gray-600 cursor-not-allowed"
+          }`}
         >
           Reserve Now
         </button>
