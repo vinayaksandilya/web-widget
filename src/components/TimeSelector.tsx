@@ -41,7 +41,7 @@ export const TimeSelector: React.FC<Props> = ({ timeSlots, selectedTime, onSelec
                     : 'Sold Out'}
                   selected={selectedTime === slotDetail.time}
                   onClick={() => slotDetail.is_available ? onSelect(slotDetail.time) : null}
-                  className={!slotDetail.is_available || slotDetail.available_covers <= 1? 'opacity-50 cursor-not-allowed' : ''}
+                  className={!slotDetail.is_available && slotDetail.available_covers >= 0? 'opacity-50 cursor-not-allowed' : ''}
                 />
               ))}
           </div>
